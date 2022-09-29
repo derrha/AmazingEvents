@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,300&display=swap');
+
+*{
+    font-family: Roboto;
+}
+main{
+    min-height: 80vh;
+}
+
+footer{
+    min-height: 10vh;
+    background-color: rgb(23, 23, 23);
+}
+
+.card-h{
+    height: 26rem;
+}
+
+.container1{
+    background-color: #852424;
+    background-image: url("./img/bg-main2.svg");
+}
+
+.container1 .text{
+    max-width: 400px;
+    color: white;
+}
+
+.cover{
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+}
+
+.text{
+    align-self: flex-start;
+    padding-top: 5rem;
+}
+

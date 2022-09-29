@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Amazing Events</title>
+    <link rel="stylesheet" href="./estilos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+            <div class="flex justify-between items-center">
+                <img class=" cursor-pointer h-10 inline" src="./img/LogoAmazingEvents.png" alt="logoAmazingEvents">
+                <span class="text-xl cursor-pointer mx-2 md:hidden block">
+                    <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+                </span>
+            </div>
+            <ul
+                class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+                <li class="mx-4 my-6 md:my-0">
+                    <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                        href="index.html">Home</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                        href="upcomingEvents.html">Upcoming Events</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                        href="pastEvents.html">Past Events</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                        href="contact.html">Contact</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                        href="stats.html">Stats</a>
+                </li>
+            </ul>
+        </nav>
+        <header class="p-8 border-b-2">
+            <h1 class="md:text-7xl text-center text-4xl font-bold">Details</h1>
+        </header>
+        <main id="detailsContainer" class="flex p-10 md:p-0 flex-wrap min-h-[70vh] items-center justify-center">
+            <div class="flex md:flex-row flex-col bg-red-500 min-h-[40vh] lg:min-h-[30vh] lg:w-[50%] shadow rounded-md overflow-hidden">
+                <img class="object-cover h-[full]" :src="details.image">
+                <div class="w-full flex flex-col align-center justify-center text-white gap-2">
+                    <h2 class=" bg-white text-black shadow text-center text-xl font-bold border-t-0 md:border-t-4 border-red-600">{{details.name}}</h2>
+                    <h2 class="shadow text-center">{{details.date}}</h2>
+                    <h2 class="shadow text-center">Category: {{details.category}}</h2>
+                    <h2 class="shadow text-center">Place: {{details.place}}</h2>
+                    <h2 class="shadow text-center">{{numberFormat.format(details.capacity)}}</h2>
+                    <h2 v-if="!details.assistance" class="shadow text-center"></h2>
+                    <h2 v-else class="shadow text-center">{{numberFormat.format(details.assistance)}}</h2>
+                    <p class="text-center italic">{{details.description}}</p>
+                    <h2 class="text-xl p-5 bg-red-900 text-center font-bold">{{moneyFormat.format(details.price)}}</h2>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class=" flex gap-2 flex-col md:flex-row justify-center md:justify-between items-center">
+        <div class="pt-3 md:pt-0 pl-0 md:pl-10 flex justify-around gap-5">
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-instagram"></ion-icon>
+            </a>
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-facebook"></ion-icon>
+            </a>
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-whatsapp"></ion-icon>
+            </a>
+        </div>
+        <span class="pb-3 md:pb-0 pr-0 md:pr-10 text-xl text-white font-medium">Cohort 30 FullStack JAVA</span>
+    </footer>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="vue.js"></script>
+</body>
+
+</html>

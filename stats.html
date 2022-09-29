@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats | Amazing Events</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+        <div class="flex justify-between items-center">
+            <img class=" cursor-pointer h-10 inline" src="./img/LogoAmazingEvents.png" alt="logoAmazingEvents">
+            <span class="text-xl cursor-pointer mx-2 md:hidden block">
+                <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+            </span>
+        </div>
+        <ul
+            class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                    href="index.html">Home</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                    href="upcomingEvents.html">Upcoming Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                    href="pastEvents.html">Past Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl active hover:text-red-600 hover:border-b hover:border-red-600 duration-200"
+                    href="contact.html">Contact</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 border-b border-red-600 duration-200" href="#">Stats</a>
+            </li>
+        </ul>
+    </nav>
+    <header class="p-8 border-b-2">
+        <h1 id="stats" class="md:text-7xl text-center font-sans">Stats</h1>
+    </header>
+    <main id="app" class="flex justify-center items-center">
+        <div class="flex justify-center items-center flex-col w-[80%]">
+            <table class="w-full ">
+                <h2 class="p-3 text-sm font-semibold tracking-wide text-left">
+                    Event Statistics
+                </h2>
+                <thead class="bg-gray-50 border-b-2 border-gray-200 ">
+                    <tr>
+                        <th class="p-3 text-sm text-gray-700">Events with the highest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with the lowest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with largest capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="eventStats">
+                        <td v-for="(event, i) in statsEvents" class="justify-between h-[20rem] w-72 drop-shadow-lg text-grey-700 bg-white border-b-4 border-red-600 rounded-md overflow-hidden">
+                            <img class=" object-cover w-full h-[10rem]" :src="event.image" :alt="event.name">
+                            <div class="p-5 flex justify-between h-full flex-col ">
+                                <div class="justify-between flex flex-col">
+                                    <h2 class="text-2xl overflow-hidden overflow-ellipsis whitespace-nowrap font-bold">
+                                        {{event.name}}</h2>
+                                    <span class="flex items-center mt-1">{{event.description}}</span>
+                                    <span class="pt-5 whitespace-nowrap font-bold">{{i<=1 ? "Attendance Percentage" : "Capacity"}}</span>
+                                    <h2><span class="text-2xl whitespace-nowrap font-bold">{{i<=1 ? percentageFormat.format(event.assistance / event.capacity) : numberFormat.format(event.capacity)}}</span></h2>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="w-full ">
+                <h2 class="p-3 text-sm font-semibold tracking-wide text-left">
+                    Uppcoming Events Statistics By Category
+                </h2>
+                <thead class="bg-gray-50 border-b-2 border-gray-200 ">
+                    <tr>
+                        <th class="p-3 text-sm text-gray-700">Events with the highest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with the lowest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with largest capacity</th>
+                    </tr>
+                </thead>
+                <tbody id="uppcomingStats">
+                    <tr v-for="stats in statsUpcoming" class="bg-white">
+                        <td class="p-3 text-sm text-gray-700">{{stats[0]}}</td>
+                        <td class="p-3 text-sm text-gray-700">{{moneyFormat.format(stats[1])}}</td>
+                        <td class="p-3 text-sm text-gray-700">{{percentageFormat.format(stats[2])}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="w-full ">
+                <h2 class="p-3 text-sm font-semibold tracking-wide text-left">
+                    Past Events Statistics By Category
+                </h2>
+                <thead class="bg-gray-50 border-b-2 border-gray-200 ">
+                    <tr>
+                        <th class="p-3 text-sm text-gray-700">Events with the highest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with the lowest percentage of attendance</th>
+                        <th class="p-3 text-sm text-gray-700">Events with largest capacity</th>
+                    </tr>
+                </thead>
+                <tbody id="pastStats">
+                    <tr v-for="stats in statsPast" class="bg-white">
+                        <td class="p-3 text-sm text-gray-700">{{stats[0]}}</td>
+                        <td class="p-3 text-sm text-gray-700">{{moneyFormat.format(stats[1])}}</td>
+                        <td class="p-3 text-sm text-gray-700">{{percentageFormat.format(stats[2])}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="flex gap-2 flex-col md:flex-row justify-center md:justify-between items-center">
+        <div class="pt-3 md:pt-0 pl-0 md:pl-10 flex justify-around gap-5">
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-instagram"></ion-icon>
+            </a>
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-facebook"></ion-icon>
+            </a>
+            <a class="text-2xl md:text-5xl" href="#">
+                <ion-icon class="fill-white" name="logo-whatsapp"></ion-icon>
+            </a>
+        </div>
+        <span class="pb-3 md:pb-0 pr-0 md:pr-10 text-xl text-white font-medium">Cohort 30 FullStack JAVA</span>
+    </footer>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="vue.js"></script>
+</body>
+
+</html>

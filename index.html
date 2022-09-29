@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Amazing Events</title>
+    <link rel="stylesheet" href="./estilos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between sticky top-0 z-10">
+        <div class="flex justify-between items-center">
+            <img class=" cursor-pointer h-10 inline" src="./img/LogoAmazingEvents.png" alt="logoAmazingEvents">
+            <span class="text-xl cursor-pointer mx-2 md:hidden block">
+                <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+            </span>
+        </div>
+        <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 border-b border-red-600 duration-200" href="#">Home</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="upcomingEvents.html">Upcoming Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="pastEvents.html">Past Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="contact.html">Contact</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="stats.html">Stats</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- <header class="p-8 border-b-2">
+        <h1 class="md:text-7xl text-center font-sans">Home</h1>
+    </header> -->
+    <main>
+        <div class="container1 w-full h-[800px] flex flex-col align-center justify-between lg:flex-row shadow">
+            <div class="cover flex align-center justify-center lg:flex-row flex-col ">
+                <div class="text md flex flex-col gap-3">
+                    <h1 class="text-8 md:text-xl font-bold">We are here for your relief</h1>
+                    <p class="text-8 md:text-xl font-thin">We are an enterprise to make your wish real. We make events for you with multiples activities!</p>
+                    <input type="button" class="py-3 w-[150px] hover:bg-white/75 ease-out transition-all duration-150 hover:text-black bg-white/25 teext-black font-bold rounded" value="See more!">
+                </div>
+                <div class="svg">
+                    <img class="min-h-[700px]" src="./img/v1012-18 [Convertido].svg" alt="svg personas">
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center align-center">
+            <h2 class="text-4xl pt-[25px] font-bold">All Events</h2>
+        </div>
+        <div id="app">
+            {{doubleFilter}}
+            <div class="hidden md:flex pt-5 md:pt-0 flex-col-reverse md:flex-row md:justify-around items-center">
+                <div id="checkbox-container" class="flex flex-col md:flex-row md:items-center p-5">
+                    <div v-for="category in categories" class="flex justify-center items-center gap-2 p-5">
+                        <input v-model="checkedCategories" type="checkbox" :id="category" :value="category">
+                        <label :for="category">{{category}}</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="relative block">
+                        <span class="sr-only">Search</span>
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                            <ion-icon class="h-5 w-5 fill-slate-300" name="search-outline"></ion-icon>
+                        </span>
+                        <input id ="searchbar" v-model="inputSearch" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-red-400 focus:ring-red-400 focus:ring-1 sm:text-sm" placeholder="Search..." type="text" name="search" />
+                    </label>
+                </div>
+            </div>
+            <section id="container1" class="flex p-10 md:p-0 flex-wrap gap-10 min-h-[80vh] items-center justify-center">
+                    <div v-if="events.length != 0" v-for="event in events" id="event.name"class="flex flex-col justify-between card-h w-72 drop-shadow-lg text-grey-700 bg-white border-b-4 border-red-600 rounded-md overflow-hidden">
+                        <img class=" object-cover w-full h-[10rem]" :src="event.image" :alt="event.name">
+                        <div class="p-5 flex justify-between h-full flex-col ">
+                            <div class="justify-between flex flex-col">
+                                <h2 class="text-2xl overflow-hidden overflow-ellipsis whitespace-nowrap font-bold">{{event.name}}</h2>
+                                <span class="flex items-center mt-1">{{event.description}}</span>
+                            </div>
+                            <div class="flex flex-col justify-between">
+                                <div class="flex flex-wrap items-center gap-2 pt-5">
+                                    <span class="px-3 py-1 rounded-full text-xs bg-gray-300">{{event.date}}</span>
+                                    <span class="px-3 py-1 rounded-full text-xs bg-gray-300">{{event.category}}</span>
+                                </div>
+                                <div class="pt-5 flex justify-between items-center">
+                                    <span class="text-xl font-bold">{{moneyFormat.format(event.price)}}</span>
+                                    <button class="bg-red-600/80 hover:bg-red-600/90 px-6 py-2 rounded-md text-white font-medium tracking-wider transition "><a :href="'./cardDetails.html?id='+event._id" >Details</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 v-else class="text-2xl overflow-hidden overflow-ellipsis whitespace-nowrap font-bold">There is no Events to show you, try again!</h2>
+            </section>
+        </div>
+    </main>
+    <footer class=" flex gap-2 flex-col md:flex-row justify-center md:justify-between items-center">
+        <div class="pt-3 md:pt-0 pl-0 md:pl-10 flex justify-around gap-5">
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-instagram"></ion-icon></a>
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-facebook"></ion-icon></a>
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-whatsapp"></ion-icon></a>
+        </div>
+        <span class="pb-3 md:pb-0 pr-0 md:pr-10 text-xl text-white font-medium">Cohort 30 FullStack JAVA</span>
+    </footer>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="vue.js"></script>
+</body>
+</html>

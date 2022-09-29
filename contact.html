@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Amazing Events</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+        <div class="flex justify-between items-center">
+            <img class=" cursor-pointer h-10 inline" src="./img/LogoAmazingEvents.png" alt="logoAmazingEvents">
+            <span class="text-xl cursor-pointer mx-2 md:hidden block">
+                <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+            </span>
+        </div>
+        <ul class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="index.html">Home</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="upcomingEvents.html">Upcoming Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="pastEvents.html">Past Events</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl active hover:text-red-600 border-b border-red-600 duration-200" href="#">Contact</a>
+            </li>
+            <li class="mx-4 my-6 md:my-0">
+                <a class="text-xl hover:text-red-600 hover:border-b hover:border-red-600 duration-200" href="stats.html">Stats</a>
+            </li>
+        </ul>
+    </nav>
+    <header class="p-8 border-b-2">
+        <h1 class="md:text-7xl text-center text-4xl font-bold">Contact Us</h1>
+    </header>
+    <main class="flex justify-center items-center">
+            <form class="w-2/3 flex flex-col" action="#">
+                <div class="p-5">                  
+                    <label for="nombre" >Name</label>
+                    <input type="text" id="nombre" class=" mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-red-800 invalid:text-red-800
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    ">
+                </div>
+                <div class="p-5">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class=" mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    ">
+                </div>
+                <div class="p-5 flex flex-col">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="messagge" cols="30" rows="10" class="resize-none mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                    focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+                    disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+                    invalid:border-pink-500 invalid:text-pink-600
+                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                    "></textarea>
+                </div>
+                <button type="submit" value="Submit" class=" text-white rounded py-4 px-10 uppercase text-xs font-medium cursor-pointer  bg-red-600/80 hover:bg-red-600/90 focus:border-sky-500 focus:outline-none focus:ring-sky-500">Submit</button>
+            </form>
+
+    </main>
+    <footer class="flex gap-2 flex-col md:flex-row justify-center md:justify-between items-center">
+        <div class="pt-3 md:pt-0 pl-0 md:pl-10 flex justify-around gap-5">
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-instagram"></ion-icon></a>
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-facebook"></ion-icon></a>
+            <a class="text-2xl md:text-5xl" href="#"><ion-icon class="fill-white" name="logo-whatsapp"></ion-icon></a>
+        </div>
+        <span class="pb-3 md:pb-0 pr-0 md:pr-10 text-xl text-white font-medium">Cohort 30 FullStack JAVA</span>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
